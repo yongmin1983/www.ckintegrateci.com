@@ -2,7 +2,7 @@
 What is This
 ###################
 
-This is a example to show people who want to integrate CodeIgniter, CKeditor and CKfinder.
+This is a example to show people who want to integrate CodeIgniter, CKeditor and CKfinder. And This is possible to go access CI session function from outside of CI system.
 
 *******************
 Release Information
