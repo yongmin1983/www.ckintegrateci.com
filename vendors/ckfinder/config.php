@@ -27,7 +27,8 @@ $config = array();
 
 switch($_SERVER["HTTP_HOST"]){
     case "localhost":
-        $serverRootIndex= ($_SERVER['DOCUMENT_ROOT'].'/www.ckintegrateci.com/index.php');
+        $serverRootIndex    = ($_SERVER['DOCUMENT_ROOT'].'/www.ckintegrateci.com/index.php');
+        $ckFinderRootPath   = ($_SERVER['DOCUMENT_ROOT'].'/www.ckintegrateci.com/vendors/uploads');
         break;
 }
 ob_start();
@@ -82,7 +83,7 @@ $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
     'baseUrl'      => '/ckfinder/userfiles/',
-//  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
+    'root'         => $ckFinderRootPath, // Can be used to explicitly set the CKFinder user files directory.
     'chmodFiles'   => 0777,
     'chmodFolders' => 0755,
     'filesystemEncoding' => 'UTF-8',

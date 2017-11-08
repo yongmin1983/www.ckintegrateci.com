@@ -45,9 +45,9 @@ Installation
 
 3, Change index.php file which is in same folder level as application and system.
 
-    3.1: $system_path = dirname(__FILE__).'/system'; It was: $system_path = 'system'
+    3.1: $system_path = dirname(__FILE__).'/system'; //It was: $system_path = 'system'
 
-    3.2: $application_folder = dirname(__FILE__).'/application'; It was: $application_folder = 'application'
+    3.2: $application_folder = dirname(__FILE__).'/application'; //It was: $application_folder = 'application'
 
 4, CodeIgniter: application/config/autoload.php
 
@@ -124,6 +124,27 @@ Installation
             });
             CKFinder.setupCKEditor( editor, '../' );
         </script>
+
+9, Custom config CK finder images / files upload path:
+
+    9.1 Uncomment line of "root" and config your prefer path: $ckFinderRootPath
+
+        switch($_SERVER["HTTP_HOST"]){
+            case "localhost":
+                $serverRootIndex    = ($_SERVER['DOCUMENT_ROOT'].'/www.ckintegrateci.com/index.php');
+                $ckFinderRootPath   = ($_SERVER['DOCUMENT_ROOT'].'/www.ckintegrateci.com/vendors/uploads');
+                break;
+        }
+
+        $config['backends'][] = array(
+            'name'         => 'default',
+            'adapter'      => 'local',
+            'baseUrl'      => '/ckfinder/userfiles/',
+            'root'         => $ckFinderRootPath, // Can be used to explicitly set the CKFinder user files directory.
+            'chmodFiles'   => 0777,
+            'chmodFolders' => 0755,
+            'filesystemEncoding' => 'UTF-8',
+        );
 
 
 
