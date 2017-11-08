@@ -20,6 +20,37 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        if($this->session->userdata('is_user_login')){
+		    $this->load->view('welcome_message');
+        }else{
+            $this->session->set_flashdata('msg', 'You need log in First');
+            redirect('welcome/login');
+        }
+	}
+	public function login()
+	{
+	    if(isset($_POST) && !empty($_POST)){
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            if($username === 'admin' && $password === 'admin'){
+                $this->session->set_userdata('is_user_login', 'administrator');
+                redirect('welcome');
+            }else{
+                $this->session->set_flashdata('msg', 'Incorrect username and password');
+                $this->load->view('login');
+            }
+        }else{
+	        $this->load->view('login');
+        }
+	}
+	public function logout()
+	{
+        if($this->session->userdata('is_user_login')){
+            $this->session->unset_userdata('is_user_login');
+            $this->session->set_flashdata('msg', 'You have log out');
+        }else{
+            $this->session->set_flashdata('msg', 'You have not log in');
+        }
+        redirect('welcome/login');
 	}
 }

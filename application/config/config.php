@@ -23,7 +23,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+switch($_SERVER["HTTP_HOST"]){
+    case "localhost":
+        $config['base_url'] = 'http://localhost/www.ckintegrateci.com/';
+        break;
+    default:
+        $config['base_url'] = 'http://localhost/www.ckintegrateci.com/';
+        break;
+}
 
 /*
 |--------------------------------------------------------------------------

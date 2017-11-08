@@ -71,19 +71,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Welcome to CodeIgniter!</h1>
 
 	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+        <?php echo form_open_multipart('contentUpload', 'id="" class=""');?>
+        <textarea title="" name="newsContent" id="newsContent" rows="10" cols="80" style="visibility: hidden;">
 
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
+        </textarea>
 
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/Welcome.php</code>
+        <input title="" class="" type="submit" value="upload">
+        <?php echo form_close(); ?>
 
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
+        <div style="clear:both;"></div>
+        <div style="margin-top: 30px;"></div>
+        <?php echo "<div>\$_SESSION['is_user_login'] = ".$this->session->userdata('is_user_login').'</div>'; ?>
+        <div><a href="<?php echo base_url('index.php/welcome/logout'); ?>"><button>Log Out</button></a></div>
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<!-- CK editor -->
+<script type="text/javascript" src="<?php echo base_url('vendors/ckeditor/ckeditor.js'); ?>"></script>
+<!-- CK finder -->
+<script type="text/javascript" src="<?php echo base_url('vendors/ckfinder/ckfinder.js'); ?>"></script>
+<script>
+    var editor = CKEDITOR.replace( 'newsContent', {
+        height:500,
+        removePlugins : 'resize',
+        filebrowserBrowseUrl        : '<?php echo base_url('vendors/ckfinder/ckfinder.html'); ?>',
+        filebrowserImageBrowseUrl   : '<?php echo base_url('vendors/ckfinder/ckfinder.html?type=Images'); ?>',
+        filebrowserFlashBrowseUrl   : '<?php echo base_url('vendors/ckfinder/ckfinder.html?type=Flash'); ?>',
+        filebrowserUploadUrl        : '<?php echo base_url('vendors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'); ?>',
+        filebrowserImageUploadUrl   : '<?php echo base_url('vendors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'); ?>',
+        filebrowserFlashUploadUrl   : '<?php echo base_url('vendors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'); ?>'
+    });
+    CKFinder.setupCKEditor( editor, '../' );
+</script>
 
 </body>
 </html>

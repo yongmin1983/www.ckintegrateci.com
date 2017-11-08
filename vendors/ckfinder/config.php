@@ -25,8 +25,23 @@ $config = array();
 /*============================ Enable PHP Connector HERE ==============================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_authentication
 
+switch($_SERVER["HTTP_HOST"]){
+    case "localhost":
+        $serverRootIndex= ($_SERVER['DOCUMENT_ROOT'].'/www.ckintegrateci.com/index.php');
+        break;
+}
+ob_start();
+include($serverRootIndex);
+ob_end_clean();
+
 $config['authentication'] = function () {
-    return false;
+
+    $CI = &get_instance();
+    $CI->load->library('session');
+    if($CI->session->userdata('is_user_login') && $CI->session->userdata('is_user_login') === 'administrator'){
+        return TRUE;
+    }
+    return FALSE;
 };
 
 /*============================ License Key ============================================*/
