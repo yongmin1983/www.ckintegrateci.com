@@ -39,11 +39,11 @@ issues, as well as missing features.
 Installation
 ************
 
-1, Download CodeIgniter 3.1.6, CKEditor 4.7.3, CKFinder 3.4.2.
-2, Create a folder Vendors which is same folder level as application. Copy Folder "ckeditor" and "ckfinder" to vendors folder.
-3, Change index.php file which is in same folder level as application and system.
-    3.1: $system_path = dirname(__FILE__).'/system'; It was: $system_path = 'system'
-    3.2: $application_folder = dirname(__FILE__).'/application'; It was: $application_folder = 'application'
+1, Download CodeIgniter 3.1.6, CKEditor 4.7.3, CKFinder 3.4.2._
+2, Create a folder Vendors which is same folder level as application. Copy Folder "ckeditor" and "ckfinder" to vendors folder._
+3, Change index.php file which is in same folder level as application and system._
+    3.1: $system_path = dirname(__FILE__).'/system'; It was: $system_path = 'system'_
+    3.2: $application_folder = dirname(__FILE__).'/application'; It was: $application_folder = 'application'_
 
 
 *********
